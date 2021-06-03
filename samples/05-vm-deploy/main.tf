@@ -9,7 +9,7 @@ terraform {
 
   backend "azurerm" {
     resource_group_name  = "lm-devops-rg"
-    storage_account_name = "lmdevopssa"
+    storage_account_name = "jolmdevopssa"
     container_name       = "terraform-actions-demo"
     key                  = "05-vm-deploy.tfstate"
   }
@@ -43,7 +43,7 @@ data "terraform_remote_state" "hello_network" {
 
   config = {
     resource_group_name  = "lm-devops-rg"
-    storage_account_name = "lmdevopssa"
+    storage_account_name = "jolmdevopssa"
     container_name       = "terraform-actions-demo"
     key                  = "01-hello-network.tfstate"
   }
