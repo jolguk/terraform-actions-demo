@@ -1,4 +1,4 @@
-# Configure Terraform
+# Configure Terraform jolguk
 terraform {
   required_providers {
     azurerm = {
