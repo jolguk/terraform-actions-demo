@@ -1,4 +1,4 @@
-# Configure Terraform
+# Configure Terraform jo
 terraform {
   required_providers {
     azurerm = {
