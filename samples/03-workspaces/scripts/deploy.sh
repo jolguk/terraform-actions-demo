@@ -6,9 +6,9 @@ echo "Initializing Terraform..."
 terraform init
 
 echo "Selecting Terraform Workspace ($DEPLOY_WORKSPACE)..."
-terraform workspace delete dev -force
-terraform workspace delete test -force
-terraform workspace delete prod -force
+terraform workspace delete -force dev
+terraform workspace delete  -force test
+terraform workspace delete  -force prod
 terraform workspace new dev
 terraform workspace new test
 terraform workspace new prod
