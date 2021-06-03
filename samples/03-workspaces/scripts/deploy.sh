@@ -19,3 +19,25 @@ terraform plan
 
 echo "Applying Terraform Deployment..."
 terraform apply -auto-approve
+
+terraform workspace select test
+
+echo "Validating Terraform Format..."
+terraform fmt -check
+
+echo "Planning Terraform Deployment..."
+terraform plan
+
+echo "Applying Terraform Deployment..."
+terraform apply -auto-approve
+
+terraform workspace select prod
+
+echo "Validating Terraform Format..."
+terraform fmt -check
+
+echo "Planning Terraform Deployment..."
+terraform plan
+
+echo "Applying Terraform Deployment..."
+terraform apply -auto-approve
