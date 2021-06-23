@@ -22,7 +22,7 @@ provider "azurerm" {
 
 # Define local variables
 locals {
-  prefix = "pr-workflow"
+  prefix = "wednesday-pr-workflow"
 
   tags = {
     owner = "terraform"
