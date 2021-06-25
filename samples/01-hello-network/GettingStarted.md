@@ -1,4 +1,4 @@
-# Getting Started  #
+# Getting Started jo #
 
 ## Set up your machine ##
 1. Install [Visual Studio 2013 Update 4 or 2015 RC](http://www.visualstudio.com) 
