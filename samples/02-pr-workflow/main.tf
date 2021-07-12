@@ -22,7 +22,7 @@ provider "azurerm" {
 
 # Define local variables
 locals {
-  prefix = "vm-deploy"
+  prefix = "30test2git32-mon-jopr-workflow"
 
   tags = {
     owner = "terraform"
