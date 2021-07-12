@@ -8,10 +8,10 @@ terraform {
   }
 
   backend "azurerm" {
-    resource_group_name  = "lm-devops-rg"
+    resource_group_name  = "jo-devops-rg"
     storage_account_name = "jolmdevopssa"
     container_name       = "terraform-actions-demo"
-    key                  = "05-vm-deploy.tfstate"
+    key                  = "02-pr-workflow.tfstate"
   }
 }
 
@@ -22,11 +22,12 @@ provider "azurerm" {
 
 # Define local variables
 locals {
-  prefix = "30test2git32-mon-jopr-workflow"
+  prefix = "pr-workflow"
 
   tags = {
     owner = "terraform"
-    demo  = "05-vm-deploy"
+    demo  = "02-pr-workflow"
+    foo   = "bar"
   }
 }
 
@@ -37,54 +38,11 @@ resource "azurerm_resource_group" "default" {
   tags     = local.tags
 }
 
-# Reference state from hello-network deployment
-data "terraform_remote_state" "hello_network" {
-  backend = "azurerm"
-
-  config = {
-    resource_group_name  = "lm-devops-rg"
-    storage_account_name = "jolmdevopssa"
-    container_name       = "terraform-actions-demo"
-    key                  = "01-hello-network.tfstate"
-  }
-}
-
-# Create a network interface
-resource "azurerm_network_interface" "default" {
-  name                = "${local.prefix}-nic"
-  location            = azurerm_resource_group.default.location
+# Create a virtual network within the resource group
+resource "azurerm_virtual_network" "default" {
+  name                = "${local.prefix}-vnet"
   resource_group_name = azurerm_resource_group.default.name
-
-  ip_configuration {
-    name                          = "internal"
-    subnet_id                     = data.terraform_remote_state.hello_network.outputs.subnet_id
-    private_ip_address_allocation = "Dynamic"
-  }
-}
-
-# Create a Linux VM resource
-resource "azurerm_linux_virtual_machine" "default" {
-  name                            = "${local.prefix}-vm"
-  location                        = azurerm_resource_group.default.location
-  resource_group_name             = azurerm_resource_group.default.name
-  size                            = "Standard_F2"
-  admin_username                  = "adminuser"
-  admin_password                  = var.admin_password
-  disable_password_authentication = false
-
-  network_interface_ids = [
-    azurerm_network_interface.default.id,
-  ]
-
-  os_disk {
-    caching              = "ReadWrite"
-    storage_account_type = "Standard_LRS"
-  }
-
-  source_image_reference {
-    publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "18.04-LTS"
-    version   = "latest"
-  }
+  location            = azurerm_resource_group.default.location
+  address_space       = ["10.0.0.0/16"]
+  tags                = local.tags
 }
