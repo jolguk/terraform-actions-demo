@@ -6,6 +6,7 @@ echo "Initializing Terraform..."
 terraform init
 
 echo "Selecting Terraform Workspace ($DEPLOY_WORKSPACE)..."
+terraform workspace new dev
 terraform workspace select $DEPLOY_WORKSPACE
 
 echo "Validating Terraform Format..."
