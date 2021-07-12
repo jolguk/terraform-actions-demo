@@ -8,7 +8,7 @@ terraform {
   }
 
   backend "azurerm" {
-    resource_group_name  = "lm-devops-rg"
+    resource_group_name  = "jo-devops-rg"
     storage_account_name = "jolmdevopssa"
     container_name       = "terraform-actions-demo"
     key                  = "03-workspaces.tfstate"
