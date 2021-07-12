@@ -8,10 +8,10 @@ terraform {
   }
 
   backend "azurerm" {
-    resource_group_name  = "lm-devops-rg"
+    resource_group_name  = "jo-devops-rg"
     storage_account_name = "jolmdevopssa"
     container_name       = "terraform-actions-demo"
-    key                  = "02-pr-workflow.tfstate"
+    key                  = "01-hello-network.tfstate"
   }
 }
 
@@ -22,11 +22,11 @@ provider "azurerm" {
 
 # Define local variables
 locals {
-  prefix = "30test2git32-mon-jopr-workflow"
+  prefix = "hello-network"
 
   tags = {
     owner = "terraform"
-    demo  = "02-pr-workflow"
+    demo  = "01-hello-network"
     foo   = "bar"
   }
 }
