@@ -38,38 +38,4 @@ jobs:
         env:
           DEPLOY_WORKSPACE: dev
 
-  deploy_test:
-    name: "Deploy Test"
-    environment: test
-    needs: deploy_dev
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
-
-      - name: Terraform 
-        run: ./scripts/deploy.sh
-        env:
-          DEPLOY_WORKSPACE: test
-
-  deploy_prod:
-    name: "Deploy Prod"
-    environment: prod
-    needs: deploy_test
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
-
-      - name: Terraform 
-        run: ./scripts/deploy.sh
-        env:
-          DEPLOY_WORKSPACE: prod
+ 
