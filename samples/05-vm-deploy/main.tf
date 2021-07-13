@@ -1,4 +1,4 @@
-# Configure Terraform kick off
+# Configure Terraform kick off with password in secrets
 terraform {
   required_providers {
     azurerm = {

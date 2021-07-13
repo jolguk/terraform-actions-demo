@@ -6,5 +6,4 @@ variable "location" {
 variable "admin_password" {
   type      = string
   sensitive = true
-  default   = "lab5"
-}
+  }
