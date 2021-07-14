@@ -1,4 +1,4 @@
-# Configure Terraform joannetestmodule1 
+# Configure Terraform joannetestmodule1 14july
 terraform {
   required_providers {
     azurerm = {
