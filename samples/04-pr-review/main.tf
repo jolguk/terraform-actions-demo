@@ -1,4 +1,4 @@
-# Configure Terraform this is the new test brach
+# Configure Terraform this is the new test brach 16July
 terraform {
   required_providers {
     azurerm = {
