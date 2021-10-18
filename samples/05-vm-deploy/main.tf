@@ -1,4 +1,4 @@
-# Configure Terraform kick off with password in secrets - better password 16 July
+# Configure Terraform kick off with password in secrets - better password 16 July jo
 terraform {
   required_providers {
     azurerm = {
